@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-
-const url = "http://localhost3000:api/v1/food"
+import FoodList from './FoodList'
+const url = "http://localhost3000:api/v1/foods"
 
 export default class FridgeContainer extends Component {
   constructor(){
@@ -14,7 +14,8 @@ export default class FridgeContainer extends Component {
     return (
       <div className="row">
         <div className="col-lg-4">
-          <FoodList />
+          <h1>Hi</h1>
+          <FoodList foods={this.state.foods} />
 
         </div>
       </div>
