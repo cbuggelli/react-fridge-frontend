@@ -9,24 +9,16 @@ export default class FridgeContainer extends Component {
       foods: []
     }
 
-    this.fetchData = this.fetchData.bind(this)
   }
 
-  // const parseJSON = function(response) {
-  //   return response.json()
-  // }
-
-  componentDidMount() {
-    this.fetchData(url)
+  componentDidMount(){
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      this.setState({ foods: data })
+    })
   }
-
-  fetchData(path) {
-    fetch(path)
-      .then( res => res.json() )
-      .then( data => this.setState({ foods: data}))
-  }
-
-
 
   render() {
 
