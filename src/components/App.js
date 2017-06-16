@@ -6,7 +6,7 @@ import FridgeContainer from './FridgeContainer'
 import Form from './Form'
 import { Route } from 'react-router-dom'
 
-import './App.css';
+import '../App.css';
 
 class App extends Component {
   render() {

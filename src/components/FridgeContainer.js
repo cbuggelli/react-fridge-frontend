@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import FoodList from './FoodList'
-const url = "http://localhost3000:api/v1/foods"
+const url = 'http://localhost:3000/api/v1/foods'
 
 export default class FridgeContainer extends Component {
   constructor(){
@@ -8,13 +8,31 @@ export default class FridgeContainer extends Component {
     this.state = {
       foods: []
     }
+
+    this.fetchData = this.fetchData.bind(this)
   }
 
+  // const parseJSON = function(response) {
+  //   return response.json()
+  // }
+
+  componentDidMount() {
+    this.fetchData(url)
+  }
+
+  fetchData(path) {
+    fetch(path)
+      .then( res => res.json() )
+      .then( data => this.setState({ foods: data}))
+  }
+
+
+
   render() {
+
     return (
       <div className="row">
         <div className="col-lg-4">
-          <h1>Hi</h1>
           <FoodList foods={this.state.foods} />
 
         </div>
