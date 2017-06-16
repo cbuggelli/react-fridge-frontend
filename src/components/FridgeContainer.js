@@ -23,30 +23,25 @@ export default class FridgeContainer extends Component {
     })
   }
 
-  // postFood(){
-  //   fetch(url, {
-  //     method: 'POST',
-  //     headers: {
-  //       'content-type' : 'application/json',
-  //       'accept' : 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       foods: {
-  //         name: name,
-  //         days_until_expiration: days_until_expiration,
-  //         quantity: quantity,
-  //         category_id: category_id
-  //       }
-  //     })
-  //   })
-  //     .then(res => res.json())
-  //     .then(food => this.setState((pState) => {
-  //       return {
-  //         foods: [...pState.foods, food]
-  //       }
-  //     })
-  //   )
-  // }
+  createFood(food){
+    debugger
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'content-type' : 'application/json',
+        'accept' : 'application/json'
+      },
+      body: JSON.stringify({
+        food: {
+          name: food.name.value,
+          days: food.days.value,
+          quantity: food.quantity.value,
+          category_id: food.category_id.value
+        }
+      })
+    })
+    .then(res => res.json())
+  }
 
   render() {
 
