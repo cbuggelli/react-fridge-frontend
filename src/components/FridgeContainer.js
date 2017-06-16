@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+// import FridgeAdapter from '../adapters/index'
 import FoodList from './FoodList'
 import Form from './Form'
 
@@ -10,6 +11,10 @@ export default class FridgeContainer extends Component {
     this.state = {
       foods: []
     }
+
+    this.createFood = this.createFood.bind(this)
+    // this.deleteStudent = this.deleteStudent.bind(this)
+    // this.updateStudent = this.updateStudent.bind(this)
 
   }
 
@@ -23,12 +28,11 @@ export default class FridgeContainer extends Component {
   }
 
   createFood(food){
-    debugger
     fetch(url, {
       method: 'POST',
       headers: {
         'content-type' : 'application/json',
-        'accept' : 'application/json'
+        'accept' : 'application/json',
       },
       body: JSON.stringify({
         food: {
