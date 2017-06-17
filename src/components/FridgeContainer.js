@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import FridgeAdapter from '../adapters/index'
+import FridgeAdapter from '../adapters'
 import { Route, Switch } from 'react-router-dom'
 import FoodList from './FoodList'
 import Form from './Form'
@@ -21,30 +21,20 @@ export default class FridgeContainer extends Component {
   }
 
   componentDidMount(){
-    fetch(url)
-    .then(res => res.json())
+    FridgeAdapter.all()
     .then(data => {
       this.setState({ foods: data })
     })
   }
 
   createFood(food){
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        'content-type' : 'application/json',
-        'accept' : 'application/json',
-      },
-      body: JSON.stringify({
-        food: {
-          name: food.name.value,
-          days: food.days.value,
-          quantity: food.quantity.value,
-          category_id: parseInt(food.category.value)
+    FridgeAdapter.create(food)
+    .then(food => this.setState((previousState) => {
+        return {
+          students: [...previousState.foods, food]
         }
       })
-    })
-    .then(res => res.json())
+    )
   }
 
   render() {
