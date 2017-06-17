@@ -50,6 +50,6 @@ export class FridgeAdapter  {
   }
 
   static url(){
-    return `${baseUrl}/students`
+    return `${baseUrl}/foods`
   }
 }

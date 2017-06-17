@@ -32,9 +32,19 @@ export default class Form extends Component {
     return(
       <form onSubmit={this.handleSubmit}>
         <input type="text" name="name" placeholder="Name" value={this.state.name} onChange={this.handleChange} /><br/>
-        <input type="text" name="days" placeholder="Days until expiration" value={this.state.days} onChange={this.handleChange} /><br/>
-        <input type="text" name="quantity" placeholder="Quantity" value={this.state.quantity} onChange={this.handleChange}  /><br/>
-        <input type="text" name="category_id" placeholder="Category" value={this.state.category_id} onChange={this.handleChange} /><br/>
+        <input type="number" name="days" placeholder="Days until expiration" value={this.state.days} onChange={this.handleChange} /><br/>
+        <input type="number" name="quantity" placeholder="Quantity" value={this.state.quantity} onChange={this.handleChange}  /><br/>
+
+
+        <select name="category">
+          <option value="Meat">Meat</option>
+          <option value="Produce">Produce</option>
+          <option value="Baked">Baked</option>
+          <option value="Dairy">Dairy</option>
+        </select>
+
+
+
         <input type="submit" value="Submit" />
       </form>
     )

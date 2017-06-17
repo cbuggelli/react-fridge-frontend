@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
+<<<<<<< HEAD
 // import FridgeAdapter from '../adapters/index'
+=======
+import { Route, Switch } from 'react-router-dom'
+>>>>>>> 2a47344c6d2046d181d012f5a288cb647f2f18f4
 import FoodList from './FoodList'
 import Form from './Form'
+import FoodDetail from './FoodDetail'
 
 const url = 'http://localhost:3000/api/v1/foods'
 
@@ -22,7 +27,6 @@ export default class FridgeContainer extends Component {
     fetch(url)
     .then(res => res.json())
     .then(data => {
-      console.log(data)
       this.setState({ foods: data })
     })
   }
@@ -50,10 +54,16 @@ export default class FridgeContainer extends Component {
 
     return (
       <div className="row">
-        <div className="col-lg-4">
-          <FoodList foods={this.state.foods} />
-          <Form onSubmit={this.createFood.bind(this)} />
-
+        <div className='col-md-8'>
+          <Switch>
+            <Route exact path = '/foods' render= {() => <FoodList foods={this.state.foods} />}/>
+            }
+            <Route exact path='/foods/:id' render={(routerProps) => {
+              const id = routerProps.match.params.id
+              const food = this.state.foods.find( s =>  s.id === parseInt(id) )
+              return <FoodDetail food={food}/>
+            }} />
+          </Switch>
         </div>
       </div>
     )
