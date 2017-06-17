@@ -1,6 +1,6 @@
 const baseUrl = 'http://localhost:3000/api/v1'
 
-export class FridgeAdapter  {
+export default class FridgeAdapter  {
   static all(){
     return fetch(`${this.url()}`)
       .then( res => res.json() )
@@ -15,7 +15,7 @@ export class FridgeAdapter  {
           name: food.name.value,
           days: food.days.value,
           quantity: food.quantity.value,
-          category_id: food.category_id.value
+          category_id: parseInt(food.category.value)
         }
       })
     }).then(response => response.json() )
