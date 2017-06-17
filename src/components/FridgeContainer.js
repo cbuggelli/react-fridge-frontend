@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+// import FridgeAdapter from '../adapters/index'
 import { Route, Switch } from 'react-router-dom'
 import FoodList from './FoodList'
 import Form from './Form'
@@ -13,6 +14,10 @@ export default class FridgeContainer extends Component {
       foods: []
     }
 
+    this.createFood = this.createFood.bind(this)
+    // this.deleteStudent = this.deleteStudent.bind(this)
+    // this.updateStudent = this.updateStudent.bind(this)
+
   }
 
   componentDidMount(){
@@ -24,19 +29,18 @@ export default class FridgeContainer extends Component {
   }
 
   createFood(food){
-    debugger
     fetch(url, {
       method: 'POST',
       headers: {
         'content-type' : 'application/json',
-        'accept' : 'application/json'
+        'accept' : 'application/json',
       },
       body: JSON.stringify({
         food: {
           name: food.name.value,
           days: food.days.value,
           quantity: food.quantity.value,
-          category_id: food.category_id.value
+          category_id: parseInt(food.category.value)
         }
       })
     })
@@ -49,8 +53,8 @@ export default class FridgeContainer extends Component {
       <div className="row">
         <div className='col-md-8'>
           <Switch>
+            <Route exact path='/foods/new' render={() => <Form createFood={this.createFood.bind(this)} type="Add a food"/>} />
             <Route exact path = '/foods' render= {() => <FoodList foods={this.state.foods} />}/>
-            }
             <Route exact path='/foods/:id' render={(routerProps) => {
               const id = routerProps.match.params.id
               const food = this.state.foods.find( s =>  s.id === parseInt(id) )
