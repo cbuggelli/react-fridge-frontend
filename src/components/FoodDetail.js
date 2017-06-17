@@ -10,6 +10,7 @@ export default class FoodDetail extends Component {
     }
   }
   render() {
+    debugger
     return (
       <div className="row">
       Details!

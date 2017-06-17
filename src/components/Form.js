@@ -25,7 +25,7 @@ export default class Form extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    this.props.onSubmit(event.target.children)
+    this.props.createFood(event.target.children)
   }
 
   render() {
@@ -36,11 +36,11 @@ export default class Form extends Component {
         <input type="number" name="quantity" placeholder="Quantity" value={this.state.quantity} onChange={this.handleChange}  /><br/>
 
 
-        <select name="category">
-          <option value="Meat">Meat</option>
-          <option value="Produce">Produce</option>
-          <option value="Baked">Baked</option>
-          <option value="Dairy">Dairy</option>
+        <select name="category" value={this.state.category}>
+          <option value="1">Meat</option>
+          <option value="2">Produce</option>
+          <option value="3">Baked</option>
+          <option value="4">Dairy</option>
         </select>
 
 
