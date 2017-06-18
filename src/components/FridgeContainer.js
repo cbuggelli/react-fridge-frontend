@@ -41,11 +41,11 @@ export default class FridgeContainer extends Component {
     FridgeAdapter.destroy(id)
     .then( () => {
       this.setState( previousState => {
+        debugger
         return {
           foods: previousState.foods.filter( food => food.id !== id )
         }
       })
-      debugger
       this.props.history.push("/foods")
     })
 }
