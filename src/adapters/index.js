@@ -13,7 +13,7 @@ export default class FridgeAdapter  {
       body: JSON.stringify({
         food: {
           name: food.name.value,
-          expiration_date: food.days.value,
+          expiration_date: food.expiration_date.value,
           quantity: food.quantity.value,
           category_id: parseInt(food.category.value)
         }
