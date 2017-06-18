@@ -6,9 +6,8 @@ function NavBar(props) {
     <nav className="navbar navbar-inverse">
       <div className="container-fluid">
         <div className="navbar-header">
-          <Link to="/foods" className="navbar-brand">
-            The Fridge
-          </Link>
+          <Link to="/foods" className="navbar-brand">The Fridge</Link>
+          <Link to="/foods/new" className="navbar-brand">Add a food</Link>
         </div>
       </div>
     </nav>
