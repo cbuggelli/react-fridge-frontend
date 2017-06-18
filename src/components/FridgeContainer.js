@@ -15,7 +15,7 @@ export default class FridgeContainer extends Component {
     }
 
     this.createFood = this.createFood.bind(this)
-    // this.deleteStudent = this.deleteStudent.bind(this)
+    this.deleteFood = this.deleteFood.bind(this)
     // this.updateStudent = this.updateStudent.bind(this)
 
   }
@@ -31,11 +31,24 @@ export default class FridgeContainer extends Component {
     FridgeAdapter.create(food)
     .then(food => this.setState((previousState) => {
         return {
-          students: [...previousState.foods, food]
+          foods: [...previousState.foods, food]
         }
       })
     )
   }
+
+  deleteFood(id){
+    FridgeAdapter.destroy(id)
+    .then( () => {
+      this.setState( previousState => {
+        return {
+          foods: previousState.foods.filter( food => food.id !== id )
+        }
+      })
+      debugger
+      this.props.history.push("/foods")
+    })
+}
 
   render() {
 
@@ -48,7 +61,7 @@ export default class FridgeContainer extends Component {
             <Route exact path='/foods/:id' render={(routerProps) => {
               const id = routerProps.match.params.id
               const food = this.state.foods.find( s =>  s.id === parseInt(id) )
-              return <FoodDetail food={food}/>
+              return <FoodDetail food={food} deleteFood={this.deleteFood}/>
             }} />
           </Switch>
         </div>
