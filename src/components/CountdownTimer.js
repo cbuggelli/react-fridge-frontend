@@ -38,7 +38,7 @@ export default class CountdownTimer extends Component {
       })
     if (this.state.timeRemaining <= 0) {
       clearInterval(this.interval)
-      this.setState({ timeRemaining: "expired" })
+      this.setState({ timeRemaining: `Your ${this.props.foodName.toLowerCase()} is expired. Throw it out, it's gross.`})
     }
   }
 

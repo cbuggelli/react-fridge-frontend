@@ -17,7 +17,7 @@ export default class FoodDetail extends Component {
         <div className="row">
         Food: </div>
         <div><strong>{this.state.food.name}</strong></div>
-        <CountdownTimer timeRemaining={this.state.food.days_until_expiration} />
+        <CountdownTimer foodName={this.state.food.name} timeRemaining={this.state.food.days_until_expiration} />
       </div>
     )
   }
