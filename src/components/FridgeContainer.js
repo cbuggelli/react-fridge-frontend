@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import FridgeAdapter from '../adapters'
 import { Route, Switch } from 'react-router-dom'
+import FridgeAdapter from '../adapters'
 import FoodList from './FoodList'
 import Form from './Form'
 import FoodDetail from './FoodDetail'

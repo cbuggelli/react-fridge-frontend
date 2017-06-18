@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-
-
+import CountdownTimer from './CountdownTimer'
 
 export default class FoodDetail extends Component {
   constructor(props){
@@ -9,12 +8,16 @@ export default class FoodDetail extends Component {
       food: this.props.food
     }
   }
+
+
+
   render() {
-    debugger
     return (
-      <div className="row">
-      Details!
-      {this.state.food.name}
+      <div>
+        <div className="row">
+        Food: </div>
+        <div><strong>{this.state.food.name}</strong></div>
+        <CountdownTimer timeRemaining={this.state.food.days_until_expiration} />
       </div>
     )
   }
