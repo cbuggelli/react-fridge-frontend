@@ -28,11 +28,17 @@ export default class Form extends Component {
     this.props.createFood(event.target.children)
   }
 
+//   var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+// var firstDate = new Date(2008,01,12);
+// var secondDate = new Date(2008,01,22);
+//
+// var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+
   render() {
     return(
       <form onSubmit={this.handleSubmit}>
         <input type="text" name="name" placeholder="Name" value={this.state.name} onChange={this.handleChange} /><br/>
-        <input type="number" name="days" placeholder="Days until expiration" value={this.state.days} onChange={this.handleChange} /><br/>
+        <input type="date" name="expiration_date" placeholder="Expiration date" value={this.state.days} onChange={this.handleChange} /><br/>
         <input type="number" name="quantity" placeholder="Quantity" value={this.state.quantity} onChange={this.handleChange}  /><br/>
 
 
