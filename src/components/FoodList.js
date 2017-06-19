@@ -1,16 +1,23 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+
+
 export default function FoodList(props){
   return (
+    <div className="container fluid">
     <div className="foodlist">
+      <div className="btn-group">
+      <div className="row">
       <h1>Foods:</h1>
-      <ul>
+
         {props.foods.map((food) => (
-          <li key={food.id}><Link to={`/foods/${food.id}`}>{ food.name }</Link></li>
+          <div key={food.id} className="col-lg-2"><button className="btn btn-lg btn-primary"><Link to={`/foods/${food.id}`}>{ food.name }</Link></button></div>
           )
         )}
-      </ul>
+        </div>
+        </div>
+        </div>
     </div>
   )
 }
