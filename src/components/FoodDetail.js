@@ -9,19 +9,26 @@ export default class FoodDetail extends Component {
       expiration_date: this.props.food.expiration_date,
       quantity: this.props.food.quantity,
       category_id: this.props.food.category_id,
-      created_at: this.props.food.created_at
+      created_at: this.props.food.created_at,
+      foodObj: this.props.food
     }
-    // this.feelingLucky = this.feelingLucky.bind(this)
+    this.buttons = this.buttons.bind(this)
   }
 
-  // feelingLucky(){
-  //   if (CountdownTimer.isExpired() !== true){
-  //     return <button onClick={() => this.props.deleteFood(this.props.food.id) } className="btn btn-danger">I'm feeling lucky</button>
-  //   } else {
-  //     return null
-  //   }
-  //
-  // }
+  buttons(){
+    if (CountdownTimer.isExpired() !== true){
+      return (
+        <button onClick={() => this.props.deleteFood(this.props.food.id,this.state.foodObj) } className="btn btn-danger">Eat food</button>
+      )
+    } else {
+      return (
+        <div>
+          <button onClick={() => this.props.deleteFood(this.props.food.id) } className="btn btn-danger">I am feeling lucky</button>
+          <button onClick={() => this.props.deleteFood(this.props.food.id) } className="btn btn-danger">Throw away</button>
+        </div>
+      )
+    }
+  }
 
   render() {
     return (
