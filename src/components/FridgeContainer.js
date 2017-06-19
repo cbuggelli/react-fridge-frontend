@@ -51,7 +51,8 @@ export default class FridgeContainer extends Component {
     )
   }
 
-  deleteFood(id){
+  deleteFood(id,food){
+    if (parseInt(food.quantity) === 1){
     FridgeAdapter.destroy(id)
     .then( () => {
       this.setState( previousState => {
@@ -60,6 +61,19 @@ export default class FridgeContainer extends Component {
         }
       })
     })
+  }else{
+    food.quantity = (parseInt(food.quantity) - 1).toString()
+    var newFood = this.state.foods.map(function(item){
+      if(item.id === id){
+        return food
+      }else{
+        return item
+      }
+    })
+    this.setState({
+      foods:newFood
+    })
+  }
   }
 
   render() {
