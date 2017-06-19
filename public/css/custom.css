@@ -36,6 +36,7 @@ link:hover {
   background-color: black;
 }
 
-h1 {
-  text-decoration-style: blink
+.form {
+  float: right;
+  margin: 25px 25px 0 0;
 }
