@@ -7,9 +7,6 @@ import FoodDetail from './FoodDetail'
 import Drawers from './Drawers'
 import CatShow from './CatShow'
 
-
-const url = 'http://localhost:3000/api/v1/foods'
-
 export default class FridgeContainer extends Component {
   constructor(){
     super()
@@ -64,11 +61,14 @@ export default class FridgeContainer extends Component {
       })
       this.props.history.push("/foods")
     })
-}
+  }
 
   render() {
     return (
       <div className="row">
+        <div className="form">
+          <Form createFood={this.createFood.bind(this)} />
+        </div>
         <div className='col-md-8'>
           <Switch>
             <Route exact path = '/drawers' render= {() =><Drawers cats={this.state.categories}  />}/>
@@ -85,6 +85,7 @@ export default class FridgeContainer extends Component {
 
 
             <Route exact path='/foods/new' render={() => <Form createFood={this.createFood.bind(this)} type="Add a food"/>} />
+
             <Route exact path = '/foods' render= {() => <FoodList foods={this.state.foods} />}/>
             <Route exact path='/foods/:id' render={(routerProps) => {
               const id = routerProps.match.params.id
@@ -96,6 +97,7 @@ export default class FridgeContainer extends Component {
               return <FoodDetail food={food} deleteFood={this.deleteFood}/>
             }} />
           </Switch>
+
         </div>
       </div>
     )
