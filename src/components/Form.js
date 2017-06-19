@@ -32,7 +32,7 @@ export default class Form extends Component {
         <h3>Add a food</h3>
         <form onSubmit={this.handleSubmit}>
           <input type="text" name="name" placeholder="Name" value={this.state.name} onChange={this.handleChange} /><br/>
-          <input type="date" name="expiration_date" placeholder="Expiration date" value={this.state.days} onChange={this.handleChange} /><br/>
+          <input type="date" name="expiration_date" placeholder="Expiration date" value={this.state.expiration_date} onChange={this.handleChange} /><br/>
           <input type="number" name="quantity" placeholder="Quantity" value={this.state.quantity} onChange={this.handleChange}  /><br/>
 
           <select name="category" value={this.state.category}>

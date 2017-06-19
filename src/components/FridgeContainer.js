@@ -59,7 +59,6 @@ export default class FridgeContainer extends Component {
           foods: previousState.foods.filter( food => food.id !== id )
         }
       })
-      this.props.history.push("/foods")
     })
   }
 
