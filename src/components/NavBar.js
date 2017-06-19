@@ -8,6 +8,7 @@ function NavBar(props) {
         <div className="navbar-header">
           <Link to="/foods" className="navbar-brand">The Fridge</Link>
           <Link to="/foods/new" className="navbar-brand">Add a food</Link>
+          <Link to="/drawers" className="navbar-brand">My Drawers</Link>
         </div>
       </div>
     </nav>
