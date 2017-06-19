@@ -7,7 +7,7 @@ export default function FoodList(props){
       <h1>Foods:</h1>
       <ul>
         {props.foods.map((food) => (
-          <li key={food.id}><Link to={`/foods/${food.id}`}>{ food.name }</Link></li>
+          <li key={food.id} className="food"><Link to={`/foods/${food.id}`}>{ food.name }</Link></li>
           )
         )}
       </ul>
