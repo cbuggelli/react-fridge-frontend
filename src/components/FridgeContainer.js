@@ -61,6 +61,10 @@ export default class FridgeContainer extends Component {
             <Route exact path='/foods/:id' render={(routerProps) => {
               const id = routerProps.match.params.id
               const food = this.state.foods.find( s =>  s.id === parseInt(id) )
+                if(!food){
+                routerProps.history.push("/foods")
+                return null
+              }
               return <FoodDetail food={food} deleteFood={this.deleteFood}/>
             }} />
           </Switch>
