@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+var exp = false
 
 export default class CountdownTimer extends Component {
   constructor(props){
@@ -14,12 +15,21 @@ export default class CountdownTimer extends Component {
     this.seconds = this.seconds.bind(this)
   }
 
+  static isExpired(){
+    return exp
+  }
+
   calculateTimeRemaining(date) {
     var dateArray = date.split("-")
     dateArray.map(el => parseInt(el))
-    var startDate = new Date()
-    var expDate = new Date(dateArray)
-    return Math.round(Math.abs((expDate.getTime() - startDate.getTime()) / 1000))
+    var startDate = new Date().getTime()
+    var expDate = new Date(dateArray).getTime()
+    if (expDate < startDate) {
+      exp = true
+      return null
+    } else {
+      return Math.round(Math.abs((expDate - startDate) / 1000))
+    }
   }
 
   tick() {
@@ -30,7 +40,7 @@ export default class CountdownTimer extends Component {
       })
     if (this.state.timeRemaining <= 0) {
       clearInterval(this.interval)
-      this.setState({ timeRemaining: `Your ${this.state.name.toLowerCase()} is expired. Throw it out, it's gross.`})
+      this.setState({ timeRemaining: null })
     }
   }
 
@@ -60,11 +70,10 @@ export default class CountdownTimer extends Component {
   }
 
   render() {
-    return (
-      <div>
-        Time until expiration:
-        <div>{this.days()} days, {this.hours() % 24} hours, {this.minutes()} minutes, {this.seconds()} seconds</div>
-      </div>
-    )
+    if (this.state.timeRemaining === null) {
+      return <div>Your {this.props.foodName} is expired. Throw it away, or eat it if you're feeling lucky.</div>
+    } else {
+      return <div>{this.days()} days, {this.hours() % 24} hours, {this.minutes()} minutes, {this.seconds()} seconds</div>
+    }
   }
 }
