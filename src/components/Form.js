@@ -28,20 +28,23 @@ export default class Form extends Component {
 
   render() {
     return(
-      <form onSubmit={this.handleSubmit}>
-        <input type="text" name="name" placeholder="Name" value={this.state.name} onChange={this.handleChange} /><br/>
-        <input type="date" name="expiration_date" placeholder="Expiration date" value={this.state.days} onChange={this.handleChange} /><br/>
-        <input type="number" name="quantity" placeholder="Quantity" value={this.state.quantity} onChange={this.handleChange}  /><br/>
+      <div>
+        <h3>Add a food</h3>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" name="name" placeholder="Name" value={this.state.name} onChange={this.handleChange} /><br/>
+          <input type="date" name="expiration_date" placeholder="Expiration date" value={this.state.days} onChange={this.handleChange} /><br/>
+          <input type="number" name="quantity" placeholder="Quantity" value={this.state.quantity} onChange={this.handleChange}  /><br/>
 
-        <select name="category" value={this.state.category}>
-          <option value="1">Meat</option>
-          <option value="2">Produce</option>
-          <option value="3">Baked</option>
-          <option value="4">Dairy</option>
-        </select>
+          <select name="category" value={this.state.category}>
+            <option value="1">Meat</option>
+            <option value="2">Produce</option>
+            <option value="3">Baked</option>
+            <option value="4">Dairy</option>
+          </select>
 
-        <input type="submit" value="Submit" />
-      </form>
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
     )
   }
 

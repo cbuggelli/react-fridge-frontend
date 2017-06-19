@@ -11,3 +11,8 @@ html {
   border: 40px solid #B8860B;
   height: auto;
 }
+
+.form {
+  float: right;
+  margin: 25px 25px 0 0;
+}

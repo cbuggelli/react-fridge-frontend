@@ -51,6 +51,9 @@ export default class FridgeContainer extends Component {
 
     return (
       <div className="row">
+        <div className="form">
+          <Form createFood={this.createFood.bind(this)} />
+        </div>
         <div className='col-md-8'>
           <Switch>
             <Route exact path='/foods/new' render={() => <Form createFood={this.createFood.bind(this)} type="Add a food"/>} />
@@ -66,6 +69,7 @@ export default class FridgeContainer extends Component {
               return <FoodDetail food={food} deleteFood={this.deleteFood}/>
             }} />
           </Switch>
+
         </div>
       </div>
     )
