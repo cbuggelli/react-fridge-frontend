@@ -23,7 +23,7 @@ export default class FoodDetail extends Component {
         <div>
           <CountdownTimer expiration_date={this.state.expiration_date} />
         </div>
-        <button onClick={() => this.props.deleteFood(this.props.food.id) } className="btn btn-danger">Remove food from fridge</button>
+        <button onClick={() => this.props.deleteFood(this.props.food.id) } className="btn btn-danger">Eat food</button>
       </div>
     )
   }
