@@ -2,31 +2,17 @@ const baseUrl = 'http://localhost:3000/api/v1'
 
 export default class FridgeAdapter  {
   static all(){
-    return fetch(`${this.foodUrl()}`)
+    return fetch(`${this.url()}`)
       .then( res => res.json() )
   }
 
   static allCats(){
-    return fetch(`${this.catsUrl()}`)
-      .then( res => res.json() )
+   return fetch(`${this.catsUrl()}`)
+     .then( res => res.json() )
   }
-
-
-  static createCat(cat){
-    return fetch(`${this.foodUrl()}`, {
-      method: 'POST',
-      headers: this.headers(),
-      body: JSON.stringify({
-        category: {
-          name: cat.name.value,
-        }
-      })
-    }).then(response => response.json() )
-  }
-
 
   static create(food){
-    return fetch(`${this.foodUrl()}`, {
+    return fetch(`${this.url()}`, {
       method: 'POST',
       headers: this.headers(),
       body: JSON.stringify({
@@ -42,7 +28,7 @@ export default class FridgeAdapter  {
   }
 
   static update(food){
-    return fetch(`${this.foodUrl()}/${food.id}`, {
+    return fetch(`${this.url()}/${food.id}`, {
       method: 'PATCH',
       headers: this.headers(),
       body: JSON.stringify({
@@ -57,7 +43,7 @@ export default class FridgeAdapter  {
   }
 
   static destroy(id){
-    return fetch(`${this.foodUrl()}/${id}`, {
+    return fetch(`${this.url()}/${id}`, {
       method: 'DELETE'
     }).then(res => res.json() )
   }
@@ -69,7 +55,7 @@ export default class FridgeAdapter  {
     }
   }
 
-  static foodUrl(){
+  static url(){
     return `${baseUrl}/foods`
   }
 

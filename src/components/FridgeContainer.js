@@ -41,16 +41,6 @@ export default class FridgeContainer extends Component {
     )
   }
 
-  createCat(cat){
-    FridgeAdapter.createCat(cat)
-    .then(cat => this.setState((previousState) => {
-        return {
-          categories: [...previousState.categories, cat]
-        }
-      })
-    )
-  }
-
   deleteFood(id){
     FridgeAdapter.destroy(id)
     .then( () => {
@@ -66,7 +56,7 @@ export default class FridgeContainer extends Component {
     return (
       <div className="row">
         <div className="form">
-          <Form createFood={this.createFood.bind(this)} />
+          <Form createFood={this.createFood.bind(this)} categories={this.state.categories} type="Add a food" />
         </div>
         <div className='col-md-8'>
           <Switch>
@@ -83,7 +73,7 @@ export default class FridgeContainer extends Component {
             <Route exact path='/drawers/new' render={() => <Form newCat={this.createCat.bind(this)} type="Add a Drawer"/>} />
 
 
-            <Route exact path='/foods/new' render={() => <Form createFood={this.createFood.bind(this)} type="Add a food"/>} />
+            <Route exact path='/foods/new' render={() => <Form createFood={this.createFood.bind(this)} categories={this.state.categories} type="Add a food"/>} />
 
             <Route exact path = '/foods' render= {() => <FoodList foods={this.state.foods} />}/>
             <Route exact path='/foods/:id' render={(routerProps) => {

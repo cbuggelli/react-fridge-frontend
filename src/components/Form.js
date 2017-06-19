@@ -26,6 +26,12 @@ export default class Form extends Component {
     this.props.createFood(event.target.children)
   }
 
+  listCats(){
+    this.props.categories.map((category, index) => {
+      return <option value={`${index + 1}`}>{category}</option>
+    })
+  }
+
   render() {
     return(
       <div>
@@ -40,6 +46,10 @@ export default class Form extends Component {
             <option value="2">Produce</option>
             <option value="3">Baked</option>
             <option value="4">Dairy</option>
+            <option value="5">Baked</option>
+            <option value="6">Freezer</option>
+            <option value="7">Beverage</option>
+            <option value="8">Other</option>
           </select>
 
           <input type="submit" value="Submit" />

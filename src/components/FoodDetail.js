@@ -12,6 +12,11 @@ export default class FoodDetail extends Component {
       created_at: this.props.food.created_at
     }
     this.buttons = this.buttons.bind(this)
+    this.feelingLucky = this.feelingLucky.bind(this)
+  }
+
+  feelingLucky() {
+    return alert("You died of dysentery.")
   }
 
   buttons(){
@@ -22,7 +27,7 @@ export default class FoodDetail extends Component {
     } else {
       return (
         <div>
-          <button onClick={() => this.props.deleteFood(this.props.food.id) } className="btn btn-danger">I'm feeling lucky</button>
+          <button onClick={() => this.feelingLucky() } className="btn btn-danger">I'm feeling lucky</button>
           <button onClick={() => this.props.deleteFood(this.props.food.id) } className="btn btn-danger">Throw away</button>
         </div>
       )
