@@ -1,22 +1,22 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import FridgeAdapter from '../adapters/index'
+import FridgeAdapter from '../adapters'
 import FoodList from './FoodList'
 import Form from './Form'
 import FoodDetail from './FoodDetail'
-
-const url = 'http://localhost:3000/api/v1/foods'
+import Drawers from './Drawers'
+import CatShow from './CatShow'
 
 export default class FridgeContainer extends Component {
   constructor(){
     super()
     this.state = {
-      foods: []
+      foods: [],
+      categories: []
     }
 
     this.createFood = this.createFood.bind(this)
     this.deleteFood = this.deleteFood.bind(this)
-    // this.updateStudent = this.updateStudent.bind(this)
 
   }
 
@@ -24,6 +24,10 @@ export default class FridgeContainer extends Component {
     FridgeAdapter.all()
     .then(data => {
       this.setState({ foods: data })
+    })
+    FridgeAdapter.allCats()
+    .then(data => {
+      this.setState({ categories: data })
     })
   }
 
@@ -37,25 +41,51 @@ export default class FridgeContainer extends Component {
     )
   }
 
+  createCat(cat){
+    FridgeAdapter.createCat(cat)
+    .then(cat => this.setState((previousState) => {
+        return {
+          categories: [...previousState.categories, cat]
+        }
+      })
+    )
+  }
+
   deleteFood(id){
     FridgeAdapter.destroy(id)
     .then( () => {
       this.setState( previousState => {
-        debugger
         return {
           foods: previousState.foods.filter( food => food.id !== id )
         }
       })
+      this.props.history.push("/foods")
     })
-}
+  }
 
   render() {
-
     return (
       <div className="row">
+        <div className="form">
+          <Form createFood={this.createFood.bind(this)} />
+        </div>
         <div className='col-md-8'>
           <Switch>
+            <Route exact path = '/drawers' render= {() =><Drawers cats={this.state.categories}  />}/>
+            <Route exact path='/drawers/:id' render={(routerProps) => {
+              const id = parseInt(routerProps.match.params.id)
+              const drawer = this.state.categories.find( d =>  d.id === parseInt(id) )
+                if(!drawer){
+                routerProps.history.push("/drawers")
+                return null
+              }
+              return <CatShow drawer={drawer} foods = {this.state.foods} id={id}/>
+            }} />
+            <Route exact path='/drawers/new' render={() => <Form newCat={this.createCat.bind(this)} type="Add a Drawer"/>} />
+
+
             <Route exact path='/foods/new' render={() => <Form createFood={this.createFood.bind(this)} type="Add a food"/>} />
+
             <Route exact path = '/foods' render= {() => <FoodList foods={this.state.foods} />}/>
             <Route exact path='/foods/:id' render={(routerProps) => {
               const id = routerProps.match.params.id
@@ -67,6 +97,7 @@ export default class FridgeContainer extends Component {
               return <FoodDetail food={food} deleteFood={this.deleteFood}/>
             }} />
           </Switch>
+
         </div>
       </div>
     )
