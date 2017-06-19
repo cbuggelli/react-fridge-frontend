@@ -6,8 +6,30 @@ html {
 }
 
 .food {
-  padding: 2px;
-  line-height: 2;
-  border: 40px solid #B8860B;
-  height: auto;
+  padding: 10px;
+  line-height: 10px;
+  border: 5px solid #B4460B;
+  height: 200%;
+  max-width: 50%;
+  background-color: yellow;
+  opacity: 0.5;
+}
+
+.foodlist {
+  border: 10px solid #B3322B;
+  padding: 5px;
+  background: url("images/food.jpeg") no-repeat center center fixed;
+  background-color: yellow;
+  opacity: 0.5;
+  max-width: 90%;
+  align-content: left;
+}
+
+.foodlist:hover {
+  opacity: 1;
+  background-color: white;
+}
+
+link:hover {
+  background-color: black;
 }
