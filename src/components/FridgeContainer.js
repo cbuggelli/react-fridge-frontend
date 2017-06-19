@@ -4,8 +4,7 @@ import FridgeAdapter from '../adapters/index'
 import FoodList from './FoodList'
 import Form from './Form'
 import FoodDetail from './FoodDetail'
-
-const url = 'http://localhost:3000/api/v1/foods'
+import { withRouter } from 'react-router'
 
 export default class FridgeContainer extends Component {
   constructor(){
@@ -16,7 +15,6 @@ export default class FridgeContainer extends Component {
 
     this.createFood = this.createFood.bind(this)
     this.deleteFood = this.deleteFood.bind(this)
-    // this.updateStudent = this.updateStudent.bind(this)
 
   }
 
@@ -47,7 +45,7 @@ export default class FridgeContainer extends Component {
         }
       })
     })
-}
+  }
 
   render() {
 
@@ -56,6 +54,7 @@ export default class FridgeContainer extends Component {
         <div className='col-md-8'>
           <Switch>
             <Route exact path='/foods/new' render={() => <Form createFood={this.createFood.bind(this)} type="Add a food"/>} />
+
             <Route exact path = '/foods' render= {() => <FoodList foods={this.state.foods} />}/>
             <Route exact path='/foods/:id' render={(routerProps) => {
               const id = routerProps.match.params.id

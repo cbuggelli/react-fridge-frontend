@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import CountdownTimer from './CountdownTimer'
 
 export default class FoodDetail extends Component {

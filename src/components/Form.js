@@ -1,9 +1,8 @@
 import React, { Component } from  'react'
-import { Route, Link } from 'react-router-dom'
 
 export default class Form extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = {
       name: "",
@@ -11,7 +10,6 @@ export default class Form extends Component {
       quantity: "",
       category_id: ""
     }
-
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
 
@@ -35,15 +33,12 @@ export default class Form extends Component {
         <input type="date" name="expiration_date" placeholder="Expiration date" value={this.state.days} onChange={this.handleChange} /><br/>
         <input type="number" name="quantity" placeholder="Quantity" value={this.state.quantity} onChange={this.handleChange}  /><br/>
 
-
         <select name="category" value={this.state.category}>
           <option value="1">Meat</option>
           <option value="2">Produce</option>
           <option value="3">Baked</option>
           <option value="4">Dairy</option>
         </select>
-
-
 
         <input type="submit" value="Submit" />
       </form>
