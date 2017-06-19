@@ -2321,10 +2321,11 @@ fieldset[disabled] .btn-default.focus {
 .btn-primary {
   color: #ffffff;
   background-color: orange;
-  padding: 50%;
-  border-color: red;
+  padding: 50px;
+  border-color:  black;
+  border-width: 10px;
   border-radius: 20;
-  opacity: .7;
+  opacity: 1;
 
 }
 .btn-primary:focus,

@@ -11,30 +11,29 @@ html {
   border: 5px solid black;
   height: 200%;
   max-width: 95%;
-  background-color: yellow;
-  opacity: 0.5;
+  background-color: white;
+  opacity: 1;
 }
 
 .foodlist {
   border: 10px solid #B3322B;
   padding: 0px;
-  background-color: orange;
-  opacity: 0.4;
+  background-color: transparent;
+  opacity: .9;
   max-width: 90%;
-  align-content: left;
+  height: auto;
+  align-content: center;
   border: 5px solid black;
   display: block;
   margin: auto;
 }
 
 .foodlist:hover {
-  opacity: .7;
-  background-color: orange;
+  opacity: 1;
+  background-color: transparent;
 }
 
-link:hover {
-  background-color: black;
-}
+
 
 .form {
   float: right;

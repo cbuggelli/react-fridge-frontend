@@ -3,14 +3,21 @@ import { Link, Switch, Route } from 'react-router-dom'
 
 export default function Drawers(props){
   return (
-    <div>
+
+    <div className="container-fluid">
+    <div className="foodlist">
+      <div className="btn-group">
+      <div className="row">
       <h1>Drawers:</h1>
-      <ul>
+
         {props.cats.map((category) => (
-          <li key={category.id} className="cats"><Link to={`/drawers/${category.id}`}>{ category.name }</Link></li>
+          <div key={category.id} className="col-lg-2"><button className="btn btn-lg btn-warning">
+          <Link to={`/drawers/${category.id}`}>{ category.name }</Link></button></div>
           )
         )}
-      </ul>
+      </div>
+      </div>
+      </div>
     </div>
   )
 }

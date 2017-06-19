@@ -17,18 +17,19 @@ export default class CatShow extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container-fluid">
+      <div className="foodlist">
+        <div className="btn-group">
         <div className="row">
         <h1> {`Food in the ${this.state.name} drawer:`} </h1>
-        </div>
-        <div>
-          <ul>
           {this.state.foods.map((food) => (
-            <li key={food.id} className="food"><Link to={`/foods/${food.id}`}>{ food.name }</Link></li>
+
+            <div key={food.id} className="col-lg-2"><button className="btn btn-lg btn-warning"><Link to={`/foods/${food.id}`}>{ food.name }</Link></button></div>
             )
           )}
-          </ul>
+          </div>
         </div>
+      </div>
       </div>
     )
   }
