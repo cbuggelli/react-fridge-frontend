@@ -25,15 +25,20 @@ export default class FoodDetail extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container-fluid">
+      <div className="foodlist">
         <div className="row">
-        Food: </div>
+        <h1>Food: </h1>
         <div><strong>{this.state.name}</strong></div>
         <div>
           <CountdownTimer expiration_date={this.state.expiration_date} foodName={this.state.name} />
         </div>
         <button onClick={() => this.props.deleteFood(this.props.food.id) } className="btn btn-danger">Eat food</button>
+        <button onClick={() => this.props.deleteFood(this.props.food.id) } className="btn btn-danger">Trash</button>
       </div>
+      </div>
+      </div>
+
     )
   }
 }

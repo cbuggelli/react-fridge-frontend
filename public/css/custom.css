@@ -11,7 +11,7 @@ html {
   border: 5px solid black;
   height: 200%;
   max-width: 95%;
-  background-color: transparent;
+  background-color: white;
   opacity: 1;
 }
 
@@ -19,7 +19,7 @@ html {
   border: 10px solid #B3322B;
   padding: 0px;
   background-color: transparent;
-  opacity: 0.05;
+  opacity: .9;
   max-width: 90%;
   height: auto;
   align-content: center;
@@ -29,13 +29,11 @@ html {
 }
 
 .foodlist:hover {
-  opacity: .7;
+  opacity: 1;
   background-color: transparent;
 }
 
-link:hover {
-  background-color: black;
-}
+
 
 .form {
   float: right;
