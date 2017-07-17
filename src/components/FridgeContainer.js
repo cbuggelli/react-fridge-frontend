@@ -59,6 +59,8 @@ export default class FridgeContainer extends Component {
         return {
           foods: previousState.foods.filter( food => food.id !== id )
         }
+        .then(window.location.href = "http://localhost:3001/foods")
+
       })
 
     })
