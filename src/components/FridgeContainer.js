@@ -32,10 +32,12 @@ export default class FridgeContainer extends Component {
   }
 
   createFood(food){
+    debugger
     FridgeAdapter.create(food)
-    .then(food => this.setState((previousState) => {
+    .then(data => this.setState((previousState) => {
+        debugger
         return {
-          foods: [...previousState.foods, food]
+          foods: [...previousState.foods, data]
         }
       })
     )

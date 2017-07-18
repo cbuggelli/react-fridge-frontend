@@ -20,7 +20,7 @@ export default class FridgeAdapter  {
           name: food.name.value,
           expiration_date: food.expiration_date.value,
           quantity: food.quantity.value,
-          category_id: parseInt(food.category.value)
+          category_id: parseInt(food.category_id.value)
         }
       })
     }).then(response => response.json() )

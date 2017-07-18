@@ -12,10 +12,12 @@ export default class Form extends Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    // this.listCats = this.listCats.bind(this)
 
   }
 
   handleChange(event) {
+    // debugger
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -23,16 +25,17 @@ export default class Form extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
+    // debugger
     this.props.createFood(event.target.children)
   }
 
-  listCats(){
-    this.props.categories.map((category, index) => {
-      return <option value={`${index + 1}`}>{category}</option>
-    })
-  }
+
 
   render() {
+    // const listCats = this.props.categories.map((category, index) => {
+    //     return <option value={`${(index + 1)}`} key={index}>{category.name}</option>
+    //   })
+
     return(
       <div>
         <h3>Add a food</h3>
@@ -41,7 +44,7 @@ export default class Form extends Component {
           <input type="date" name="expiration_date" placeholder="Expiration date" value={this.state.expiration_date} onChange={this.handleChange} /><br/>
           <input type="number" name="quantity" placeholder="Quantity" value={this.state.quantity} onChange={this.handleChange}  /><br/>
 
-          <select name="category" value={this.state.category}>
+          <select name="category_id" value={this.state.category} onChange={this.handleChange}>
             <option value="1">Meat</option>
             <option value="2">Produce</option>
             <option value="3">Baked</option>
@@ -50,6 +53,7 @@ export default class Form extends Component {
             <option value="6">Freezer</option>
             <option value="7">Beverage</option>
             <option value="8">Other</option>
+            {/* {listCats} */}
           </select>
 
           <input type="submit" value="Submit" />
