@@ -32,15 +32,12 @@ export default class FridgeContainer extends Component {
   }
 
   createFood(food){
-    debugger
     FridgeAdapter.create(food)
     .then(data => this.setState((previousState) => {
-        debugger
-        return {
-          foods: [...previousState.foods, data]
-        }
-      })
-    )
+      return {
+        foods: [...previousState.foods, data]
+      }
+    }))
   }
 
   createCat(cat){
@@ -66,19 +63,17 @@ export default class FridgeContainer extends Component {
       })
 
     })
-  }else{
+  } else {
     food.quantity = (parseInt(food.quantity) - 1).toString()
-    var newFood = this.state.foods.map(function(item){
-      if(item.id === id){
+    var newFood = this.state.foods.map(function(item) {
+      if (item.id === id){
         return food
-      }else{
+      } else {
         return item
       }
     })
-    this.setState({
-      foods:newFood
-    })
-  }
+    this.setState({ foods: newFood })
+    }
   }
 
   render() {
@@ -93,7 +88,7 @@ export default class FridgeContainer extends Component {
             <Route exact path='/drawers/:id' render={(routerProps) => {
               const id = parseInt(routerProps.match.params.id)
               const drawer = this.state.categories.find( d =>  d.id === parseInt(id) )
-                if(!drawer){
+                if (!drawer){
                 routerProps.history.push("/drawers")
                 return null
               }
@@ -108,7 +103,7 @@ export default class FridgeContainer extends Component {
             <Route exact path='/foods/:id' render={(routerProps) => {
               const id = routerProps.match.params.id
               const food = this.state.foods.find( s =>  s.id === parseInt(id) )
-                if(!food){
+                if (!food){
                 routerProps.history.push("/foods")
                 return null
               }
