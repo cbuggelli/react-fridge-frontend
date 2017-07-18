@@ -24,6 +24,13 @@ export default class Form extends Component {
   handleSubmit(event) {
     event.preventDefault()
     this.props.createFood(event.target.children)
+    debugger
+    this.setState({
+      name: "",
+      expiration_date: "",
+      quantity: "",
+      category_id: ""
+    })
   }
 
 
