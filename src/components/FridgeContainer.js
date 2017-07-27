@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import FridgeAdapter from '../adapters'
 import FoodList from './FoodList'
 import Form from './Form'
@@ -7,9 +8,14 @@ import FoodDetail from './FoodDetail'
 import Drawers from './Drawers'
 import CatShow from './CatShow'
 
+
 export default class FridgeContainer extends Component {
-  constructor(){
-    super()
+  static contextTypes = {
+    router: PropTypes.object
+  }
+  
+  constructor(context){
+    super(context)
     this.state = {
       foods: [],
       categories: []
@@ -51,6 +57,7 @@ export default class FridgeContainer extends Component {
   }
 
   deleteFood(id, food){
+    // debugger
     if (parseInt(food.quantity) === 1){
     FridgeAdapter.destroy(id)
     .then( () => {
@@ -60,7 +67,7 @@ export default class FridgeContainer extends Component {
         }
       })
     })
-    .then(window.location.href = "http://localhost:3001/foods")
+    .then(this.context.router.history.push('/foods'))
   } else {
     food.quantity = (parseInt(food.quantity) - 1).toString()
     var newFood = this.state.foods.map(item => {
@@ -74,7 +81,7 @@ export default class FridgeContainer extends Component {
     }
   }
 
-  render() {
+  render(){
     return (
       <div className="row">
         <div className="form">

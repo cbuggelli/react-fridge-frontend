@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import CountdownTimer from './CountdownTimer'
 
 export default class FoodDetail extends Component {
-  constructor(props){
-    super(props)
+  static contextTypes = {
+    router: PropTypes.object
+  }
+
+  constructor(props, context){
+    super(props, context)
     this.state = {
       name: this.props.food.name,
       expiration_date: this.props.food.expiration_date,
@@ -17,7 +22,7 @@ export default class FoodDetail extends Component {
     this.throwAway = this.throwAway.bind(this)
   }
 
-  feelingLucky(id, food) {
+  feelingLucky(id, food){
     this.props.deleteFood(id, food)
     this.setState({
       quantity: this.state.quantity - 1
@@ -35,7 +40,7 @@ export default class FoodDetail extends Component {
   buttons(){
     if (CountdownTimer.isExpired() !== true){
       return (
-        <button onClick={() => this.props.deleteFood(this.props.food.id,this.state.foodObj) } className="btn btn-danger">Eat food</button>
+        <button onClick={() => this.throwAway(this.props.food.id,this.state.foodObj) } className="btn btn-danger">Eat food</button>
       )
     } else {
       return (
@@ -47,7 +52,7 @@ export default class FoodDetail extends Component {
     }
   }
 
-  render() {
+  render(){
     return (
       <div className="container-fluid">
       <div className="foodlist">
