@@ -14,12 +14,22 @@ export default class FoodDetail extends Component {
     }
     this.buttons = this.buttons.bind(this)
     this.feelingLucky = this.feelingLucky.bind(this)
+    this.throwAway = this.throwAway.bind(this)
   }
 
   feelingLucky(id, food) {
-    debugger
     this.props.deleteFood(id, food)
+    this.setState({
+      quantity: this.state.quantity - 1
+    })
     return alert("You died of dysentery.")
+  }
+
+  throwAway(id, food){
+    this.props.deleteFood(id, food)
+    this.setState({
+      quantity: this.state.quantity - 1
+    })
   }
 
   buttons(){
@@ -31,7 +41,7 @@ export default class FoodDetail extends Component {
       return (
         <div>
           <button onClick={() => this.feelingLucky(this.props.food.id, this.props.food) } className="btn btn-danger">I'm feeling lucky</button>
-          <button onClick={() => this.props.deleteFood(this.props.food.id, this.props.food) } className="btn btn-danger">Throw away</button>
+          <button onClick={() => this.throwAway(this.props.food.id, this.props.food) } className="btn btn-danger">Throw away</button>
         </div>
       )
     }
@@ -44,7 +54,8 @@ export default class FoodDetail extends Component {
         <div className="row">
         <h1>Food: </h1>
         <div><h1>{this.state.name}</h1></div>
-        <div><h3>{this.created_at}</h3></div>
+        <div><h1>{this.state.quantity}</h1></div>
+        <div><h3>{this.state.created_at}</h3></div>
         <div>
           <CountdownTimer expiration_date={this.state.expiration_date} foodName={this.state.name} />
         </div>
