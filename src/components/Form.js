@@ -1,7 +1,7 @@
 import React, { Component } from  'react'
 
 export default class Form extends Component {
-  constructor(props) {
+  constructor(props){
     super(props)
 
     this.state = {
@@ -12,19 +12,17 @@ export default class Form extends Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-
   }
 
-  handleChange(event) {
+  handleChange(event){
     this.setState({
       [event.target.name]: event.target.value
     })
   }
 
-  handleSubmit(event) {
+  handleSubmit(event){
     event.preventDefault()
     this.props.createFood(event.target.children)
-    debugger
     this.setState({
       name: "",
       expiration_date: "",
@@ -33,9 +31,7 @@ export default class Form extends Component {
     })
   }
 
-
-
-  render() {
+  render(){
     const listCats = this.props.categories.map((category, index) => {
         return <option value={`${(index + 1)}`} key={index}>{category.name}</option>
       })
@@ -57,5 +53,4 @@ export default class Form extends Component {
       </div>
     )
   }
-
 }

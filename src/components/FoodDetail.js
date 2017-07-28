@@ -68,7 +68,6 @@ export default class FoodDetail extends Component {
       </div>
       </div>
       </div>
-
     )
   }
 }
