@@ -6,18 +6,18 @@ export default function Drawers(props){
   return (
 
     <div className="container-fluid">
-    <div className="foodlist">
-      <div className="btn-group">
-      <div className="row">
-      <h1>Drawers:</h1>
-        {props.cats.map((category) => (
-          <div key={category.id} className="button">
-            <Link className="btn btn-lg btn-warning" to={`/drawers/${category.id}`}>{ category.name }</Link>
+      <div className="foodlist">
+        <div className="btn-group">
+          <div className="row">
+            <h1>Drawers:</h1>
+            {props.cats.map((category) => (
+              <div key={category.id} className="button">
+                <Link className="btn btn-lg btn-warning" to={`/drawers/${category.id}`}>{ category.name }</Link>
+              </div>
+              )
+            )}
           </div>
-          )
-        )}
-      </div>
-      </div>
+        </div>
       </div>
     </div>
   )

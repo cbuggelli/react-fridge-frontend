@@ -55,18 +55,18 @@ export default class FoodDetail extends Component {
   render(){
     return (
       <div className="container-fluid">
-      <div className="foodlist">
-        <div className="row">
-        <h1>Food: </h1>
-        <div><h1>{this.state.name}</h1></div>
-        <div><h1>{this.state.quantity}</h1></div>
-        <div><h3>{this.state.created_at}</h3></div>
-        <div>
-          <CountdownTimer expiration_date={this.state.expiration_date} foodName={this.state.name} />
+        <div className="foodlist">
+          <div className="row">
+            <h1>Food: </h1>
+            <div><h1>{this.state.name}</h1></div>
+            <div><h1>{this.state.quantity}</h1></div>
+            <div><h3>{this.state.created_at}</h3></div>
+            <div>
+              <CountdownTimer expiration_date={this.state.expiration_date} foodName={this.state.name} />
+            </div>
+            {this.buttons()}
+          </div>
         </div>
-        {this.buttons()}
-      </div>
-      </div>
       </div>
     )
   }
