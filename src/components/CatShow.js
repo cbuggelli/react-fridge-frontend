@@ -23,8 +23,9 @@ export default class CatShow extends Component {
         <div className="row">
         <h1> {`Food in the ${this.state.name} drawer:`} </h1>
           {this.state.foods.map((food) => (
-
-            <div key={food.id} className="col-lg-2"><button className="btn btn-lg btn-warning"><Link to={`/foods/${food.id}`}>{ food.name }</Link></button></div>
+            <div key={food.id} className="button">
+              <Link className="btn btn-lg btn-warning" to={`/foods/${food.id}`}>{food.name}</Link>
+            </div>
             )
           )}
           </div>
