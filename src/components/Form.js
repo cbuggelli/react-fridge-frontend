@@ -37,7 +37,7 @@ export default class Form extends Component {
         return <option value={`${(index + 1)}`} key={index}>{category.name}</option>
       })
 
-    return(
+    return (
       <div className="formstyle">
         <h3>Add a food</h3>
         <form onSubmit={this.handleSubmit}>

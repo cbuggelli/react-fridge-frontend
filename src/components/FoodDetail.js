@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import CountdownTimer from './CountdownTimer'
+import moment from 'moment'
 
 export default class FoodDetail extends Component {
   static contextTypes = {
@@ -20,6 +21,7 @@ export default class FoodDetail extends Component {
     this.buttons = this.buttons.bind(this)
     this.feelingLucky = this.feelingLucky.bind(this)
     this.throwAway = this.throwAway.bind(this)
+    this.createdAtDate = this.createdAtDate.bind(this)
   }
 
   feelingLucky(id, food){
@@ -52,6 +54,10 @@ export default class FoodDetail extends Component {
     }
   }
 
+  createdAtDate(){
+    return moment(this.state.created_at).format('MMMM Do YYYY')
+  }
+
   render(){
     return (
       <div className="container-fluid">
@@ -60,7 +66,7 @@ export default class FoodDetail extends Component {
             <h1>Food: </h1>
             <div><h1>{this.state.name}</h1></div>
             <div><h1>{this.state.quantity}</h1></div>
-            <div><h3>{this.state.created_at}</h3></div>
+            <div><h3>Added to The Fridge on {this.createdAtDate()}</h3></div>
             <div>
               <CountdownTimer expiration_date={this.state.expiration_date} foodName={this.state.name} />
             </div>
