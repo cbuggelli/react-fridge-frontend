@@ -1,4 +1,5 @@
 import React, { Component } from  'react'
+import '../index.css'
 
 export default class Form extends Component {
   constructor(props){
@@ -37,7 +38,7 @@ export default class Form extends Component {
       })
 
     return(
-      <div>
+      <div className="formstyle">
         <h3>Add a food</h3>
         <form onSubmit={this.handleSubmit}>
           <input type="text" name="name" placeholder="Name" value={this.state.name} onChange={this.handleChange} /><br/>
@@ -48,7 +49,7 @@ export default class Form extends Component {
             {listCats}
           </select>
 
-          <input type="submit" value="Submit" />
+          <input className="btn btn-sm inverse" type="submit" value="Submit" />
         </form>
       </div>
     )

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link, Switch, Route } from 'react-router-dom'
+import '../index.css'
 
 export default function Drawers(props){
   return (
@@ -9,10 +10,10 @@ export default function Drawers(props){
       <div className="btn-group">
       <div className="row">
       <h1>Drawers:</h1>
-
         {props.cats.map((category) => (
-          <div key={category.id} className="col-lg-2"><button className="btn btn-lg btn-warning">
-          <Link to={`/drawers/${category.id}`}>{ category.name }</Link></button></div>
+          <div key={category.id} className="button">
+            <Link className="btn btn-lg btn-warning" to={`/drawers/${category.id}`}>{ category.name }</Link>
+          </div>
           )
         )}
       </div>
