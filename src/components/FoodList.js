@@ -10,7 +10,9 @@ export default function FoodList(props){
           <div className="row">
           <h1>Foods:</h1>
             {props.foods.map((food) => (
-              <div key={food.id} className="button"><button className="btn btn-lg btn-warning inverse"><Link to={`/foods/${food.id}`}>{ food.name }</Link></button></div>
+              <div key={food.id} className="button">
+                <Link className="btn btn-lg btn-warning inverse" to={`/foods/${food.id}`}>{ food.name }</Link>
+              </div>
               )
             )}
           </div>
