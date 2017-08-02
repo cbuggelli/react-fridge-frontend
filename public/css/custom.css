@@ -15,27 +15,16 @@ html {
   opacity: 1;
 }
 
-.foodlist {
-  border: 10px solid #B3322B;
-  padding: 0px;
-  background-color: transparent;
-  opacity: .9;
-  max-width: 90%;
-  height: auto;
-  align-content: center;
-  border: 5px solid black;
-  display: block;
-  margin: auto;
-}
-
 .foodlist:hover {
   opacity: 1;
   background-color: transparent;
 }
 
-
-
 .form {
   float: right;
   margin: 25px 25px 0 0;
+}
+
+.button {
+  display: inline-block;
 }

@@ -3,3 +3,26 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.button {
+  display: inline-block;
+  margin: .3em;
+}
+
+.foodlist {
+  border: 10px solid #B3322B;
+  border-radius: 10px;
+  padding: .3em;
+  background-color: transparent;
+  opacity: .9;
+  max-width: 90%;
+  height: auto;
+  align-content: center;
+  border: 5px solid black;
+  display: block;
+  margin: auto;
+}
+
+.formstyle {
+  margin-right: 10em;
+}

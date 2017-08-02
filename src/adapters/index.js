@@ -24,7 +24,6 @@ export default class FridgeAdapter  {
         }
       })
     }).then(response => response.json() )
-    // .then(window.location.href = "http://localhost:3001/foods")
   }
 
   static update(food){

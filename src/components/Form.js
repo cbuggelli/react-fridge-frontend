@@ -1,7 +1,8 @@
 import React, { Component } from  'react'
+import '../index.css'
 
 export default class Form extends Component {
-  constructor(props) {
+  constructor(props){
     super(props)
 
     this.state = {
@@ -12,19 +13,17 @@ export default class Form extends Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-
   }
 
-  handleChange(event) {
+  handleChange(event){
     this.setState({
       [event.target.name]: event.target.value
     })
   }
 
-  handleSubmit(event) {
+  handleSubmit(event){
     event.preventDefault()
     this.props.createFood(event.target.children)
-    debugger
     this.setState({
       name: "",
       expiration_date: "",
@@ -33,15 +32,13 @@ export default class Form extends Component {
     })
   }
 
-
-
-  render() {
+  render(){
     const listCats = this.props.categories.map((category, index) => {
         return <option value={`${(index + 1)}`} key={index}>{category.name}</option>
       })
 
     return(
-      <div>
+      <div className="formstyle">
         <h3>Add a food</h3>
         <form onSubmit={this.handleSubmit}>
           <input type="text" name="name" placeholder="Name" value={this.state.name} onChange={this.handleChange} /><br/>
@@ -52,10 +49,9 @@ export default class Form extends Component {
             {listCats}
           </select>
 
-          <input type="submit" value="Submit" />
+          <input className="btn btn-sm inverse" type="submit" value="Submit" />
         </form>
       </div>
     )
   }
-
 }

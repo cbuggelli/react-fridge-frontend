@@ -13,7 +13,7 @@ export default class FridgeContainer extends Component {
   static contextTypes = {
     router: PropTypes.object
   }
-  
+
   constructor(context){
     super(context)
     this.state = {
@@ -57,7 +57,6 @@ export default class FridgeContainer extends Component {
   }
 
   deleteFood(id, food){
-    // debugger
     if (parseInt(food.quantity) === 1){
     FridgeAdapter.destroy(id)
     .then( () => {

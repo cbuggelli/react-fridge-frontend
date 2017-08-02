@@ -6,7 +6,7 @@ import FridgeContainer from './FridgeContainer'
 import '../App.css';
 
 class App extends Component {
-  render() {
+  render(){
     return (
       <div className="App">
         <NavBar />
