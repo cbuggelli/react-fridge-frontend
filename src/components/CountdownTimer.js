@@ -71,9 +71,9 @@ export default class CountdownTimer extends Component {
 
   render(){
     if (this.state.timeRemaining === null) {
-      return <h3>Your {this.props.foodName} is expired. Throw it away, or eat it if you're feeling lucky.</h3>
+      return <h3 className="shadow">Your {this.props.foodName} is expired. Throw it away, or eat it if you're feeling lucky.</h3>
     } else {
-      return <h3>Time until expiration: {this.days()} days, {this.hours() % 24} hours, {this.minutes()} minutes, {this.seconds()} seconds</h3>
+      return <h3 className="shadow">Time until expiration: {this.days()} days, {this.hours() % 24} hours, {this.minutes()} minutes, {this.seconds()} seconds</h3>
     }
   }
 }

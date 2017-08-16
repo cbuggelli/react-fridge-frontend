@@ -26,3 +26,8 @@ body {
 .formstyle {
   margin-right: 10em;
 }
+
+.shadow {
+    color: black;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
